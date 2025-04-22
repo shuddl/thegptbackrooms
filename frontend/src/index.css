@@ -1,0 +1,128 @@
+/* Global theme styles */
+:root {
+  --bg-main: #1a1a1a;
+  --bg-card: #222222;
+  --bg-message: #2a2a2a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #333333;
+  
+  /* Personality colors */
+  --sydney-color: #ff55aa;
+  --rational-color: #55aaff;
+  --creative-color: #55ff55;
+  --skeptical-color: #ffaa55;
+  --legacy-color: #aaaaaa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Override Bootstrap styles */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.list-group-item {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.form-control {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.form-control:focus {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: #666;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+  background-color: #444;
+  border-color: #555;
+}
+
+.btn-primary:hover {
+  background-color: #555;
+  border-color: #666;
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+.btn-outline-danger:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .card-header {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .message-content {
+    font-size: 0.9rem;
+  }
+  
+  .message-sender {
+    font-size: 0.8rem;
+  }
+  
+  .conversation-stats .stat-value {
+    font-size: 1rem;
+  }
+  
+  .conversation-stats .stat-label {
+    font-size: 0.7rem;
+  }
+}

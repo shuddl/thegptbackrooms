@@ -1,0 +1,34 @@
+.conversation-stats {
+  margin-bottom: 15px;
+}
+
+.stats-body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .stat-item {
+    min-width: 80px;
+  }
+}
