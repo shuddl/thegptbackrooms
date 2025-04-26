@@ -1,0 +1,19 @@
+{
+  "name": "aigang",
+  "version": "1.0.0",
+  "description": "AI Backrooms: Autonomous Agent Laboratory",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend && npm install",
+    "build-frontend": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "postinstall": "npm run install-backend && npm run install-frontend && npm run build-frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

@@ -50,7 +50,17 @@ const checkAndIncrementApiCount = () => {
 
 // Initialize Express app
 const app = express();
-app.use(cors());
+
+// Configure CORS for deployment
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? [/\.onrender\.com$/, process.env.FRONTEND_URL].filter(Boolean)
+    : 'http://localhost:3000',
+  methods: ['GET', 'POST'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Create HTTP server

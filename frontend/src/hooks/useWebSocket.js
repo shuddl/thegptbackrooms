@@ -3,7 +3,15 @@ import { useState, useEffect, useCallback } from 'react';
 // Dynamic WebSocket URL based on environment
 const getWsUrl = () => {
   if (process.env.NODE_ENV === 'production') {
-    // In production, use relative WebSocket protocol
+    // In production, use the Render.com backend service URL
+    // The REACT_APP_BACKEND_URL would be set in the frontend service environment variables
+    if (process.env.REACT_APP_BACKEND_URL) {
+      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      // Extract hostname from the backend URL and use it for WebSocket connection
+      const backendUrl = new URL(process.env.REACT_APP_BACKEND_URL);
+      return `${wsProtocol}//${backendUrl.host}`;
+    }
+    // Fallback to relative URL
     const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     return `${wsProtocol}//${window.location.host}`;
   }

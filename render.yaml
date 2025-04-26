@@ -1,0 +1,43 @@
+services:
+  # Backend service - runs the Node.js server
+  - type: web
+    name: aigang-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm run install-backend
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: DAILY_API_LIMIT
+        value: 25
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        fromService:
+          name: aigang-frontend
+          type: web
+          property: url
+
+  # Frontend service - static site hosting
+  - type: web
+    name: aigang-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: npm run install-frontend && npm run build-frontend
+    staticPublishPath: ./frontend/build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          name: aigang-backend
+          type: web
+          property: url
